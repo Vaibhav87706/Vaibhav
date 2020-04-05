@@ -1,0 +1,1438 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="description" content="Official Portal of the District Administration of Mandsaur, State Government of Madhya Pradesh (India)" />
+    <meta name="keywords" content="Mandsaur, Home, District, Collectorate Mandsaur, Madhya Pradesh, MP, India, NIC Mandsaur" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Cache-Control" content="Private" />
+    <title>Home: Mandsaur A District of Madhya Pradesh</title>
+    <link rel="shortcut icon" href="icon/favicon.ico" type="image/x-icon" />
+    <link href="CSS/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <!--<link rel="stylesheet" type="text/css" href="engine1/style.css" />-->
+    <!-- <script language="javascript" type="text/javascript" src="engine1/jquery.js"></script>-->
+    <link rel="alternate stylesheet" type="text/css" media="screen" title="small" href="CSS/css_small.css" />
+    <link rel="alternate stylesheet" type="text/css" media="screen" title="bigger" href="CSS/css_bigger.css" />
+    <link rel="Stylesheet" href="CSS/smoothness/jquery-ui-1.10.3.custom.css" />
+    <script language="javascript" type="text/javascript" src="js/jquery-1.9.1.js"></script>
+    <script language="javascript" type="text/javascript" src="js/jquery-ui-1.10.3.custom.js"></script>
+    <script type="text/javascript" language="javascript">
+    //<![CDATA[
+        function carousel(params) {
+            if (!(params.width > 0 && isFinite(params.width))) params.width = 100;
+            if (!(params.height > 0 && isFinite(params.height))) params.height = 100;
+            if (!(params.sides > 2 && isFinite(params.sides))) params.sides = 4;
+            if (!(params.steps > 0 && params.steps < 100 && isFinite(params.steps))) params.steps = 20;
+            if (!(params.speed > 0 && isFinite(params.speed))) params.speed = 8;
+            if (!(params.image_border_width >= 0 && isFinite(params.image_border_width))) params.image_border_width = 0;
+            if (isFinite(params.id) || !params.id) params.id = 'bad_id_given_' + Math.random();
+
+            document.write("<div style='position:relative;overflow:hidden;' id='" + params.id.replace(/[^a-zA-Z0-9]+/g, '_') + "'></div>");
+            var cdiv = document.getElementById(params.id.replace(/[^a-zA-Z0-9]+/g, '_'))
+            cdiv.style.width = params.width + 'px';
+            cdiv.style.height = params.height + 'px';
+            cdiv.style.border = params.border;
+            cdiv.style.position = 'relative';
+            cdiv.style.overflow = 'hidden';
+            cdiv.title = params.id;
+
+            var counter = 0, spinning = true, interval = Math.floor(60000 / params.sides / params.steps / params.speed) - 5;
+            interval = isNaN(interval) ? 200 : interval;
+            var img_position = [], images = [], img_dimension = [];
+            var img_index = params.images.length + 1, img_index_cap = 2 * params.images.length;
+            var faces = Math.ceil(params.sides / 2), dimension, direction, targ, attr, faraway;
+
+            function init() {
+                if (params.direction == "left" || params.direction == "right") {
+                    direction = params.direction;
+                    dimension = "width";
+                }
+                else if (params.direction == "top" || params.direction == "bottom") {
+                    direction = params.direction;
+                    dimension = "height";
+                }
+                else {
+                    direction = "left";
+                    dimension = "width";
+                }
+                faraway = (direction == "left" || direction == "top") ? '-20000px' : '20000px';
+                cdiv.style[dimension] = params[dimension] / (params.size_mode == 'image' ? Math.sin(Math.PI / params.sides) : 1) + 'px';
+                var img = new Image();
+                img.style.position = 'absolute';
+                img.style[direction] = faraway;
+                img.style.width = params.width - 2 * params.image_border_width + 'px';
+                img.style.height = params.height - 2 * params.image_border_width + 'px';
+                img.style.border = (params.image_border_width || 0) + 'px solid ' + params.image_border_color;
+
+                for (var i = 0; i < params.images.length; i++) {
+                    images[i] = img.cloneNode(true);
+                    images[i].src = params.images[i];
+                    if (params.links && params.links[i] && params.links[i] != '') {
+                        targ = params.lnk_targets && params.lnk_targets[i] || params.lnk_base || 'new';
+                        if (targ == "_blank") {
+                            attr = (params.lnk_attr && params.lnk_attr[i]) ? ",'" + params.lnk_attr[i] + "'" : "";
+                            images[i].onclick = new Function("window.open('" + params.links[i] + "','" + targ + "'" + attr + ")");
+                        }
+                        else if (targ.substr(0, 1) == "_") {
+                            images[i].onclick = new Function(targ.substr(1) + ".location='" + params.links[i] + "'");
+                        }
+                        else {
+                            attr = (params.lnk_attr && params.lnk_attr[i]) ? ",'" + params.lnk_attr[i] + "'" : "";
+                            images[i].onclick = new Function("var t='" + targ + "';if(window[t]){try{window[t].close()}catch(z){}}window[t]=window.open('" + params.links[i] + "',t" + attr + ");window[t].focus()");
+                        }
+                        images[i].style.cursor = document.all ? 'hand' : 'pointer';
+                    }
+
+                    if (params.titles && params.titles[i] && params.titles[i] != '')
+                        images[i].title = params.titles[i];
+                    if (document.all)
+                        images[i].alt = images[i].title;
+                    images[i + params.images.length] = images[i];
+                    if (params.images.length == faces)
+                        images[i + 2 * params.images.length] = images[i];
+                    cdiv.appendChild(images[i]);
+                }
+
+                var face_size = params.size_mode == 'image' ? params[dimension] : params[dimension] * Math.sin(Math.PI / params.sides);
+                var face_offset = params[dimension] * Math.cos(Math.PI / params.sides) / (params.size_mode == 'image' ? Math.sin(Math.PI / params.sides) : 1) / 2 - .5;
+                var pi_piece = 2 * Math.PI / params.steps / params.sides;
+                for (i = 0; i <= params.steps * faces; i++) {
+                    img_dimension[i] = face_size * Math.sin(pi_piece * i);
+                    img_position[i] = (i < params.steps * params.sides / 2) ? Math.floor(params[dimension] / 2 / (params.size_mode == 'image' ? Math.sin(Math.PI / params.sides) : 1) - face_offset * Math.cos(pi_piece * i) - img_dimension[i] / 2) + 'px' : faraway;
+                    img_dimension[i] = img_dimension[i] - 2 * params.image_border_width > 1 ? Math.ceil(img_dimension[i]) - 2 * params.image_border_width + 'px' : '1px';
+                }
+            }
+            init();
+
+            cdiv.rotate = function () {
+                setTimeout('document.getElementById("' + cdiv.id + '").rotate()', interval);
+                if (!spinning) return;
+                if (++counter >= params.steps) {
+                    counter = 0;
+                    if (++img_index >= img_index_cap)
+                        img_index = params.images.length;
+                }
+                images[img_index - faces].style[direction] = faraway;
+                for (var i = faces - 1; i >= 0; i--) {
+                    images[img_index - i].style[direction] = img_position[counter + i * params.steps];
+                    images[img_index - i].style[dimension] = img_dimension[counter + i * params.steps];
+                }
+            }
+            cdiv.onmouseover = function () {
+                spinning = false;
+            }
+            cdiv.onmouseout = function () {
+                spinning = true;
+            }
+            setTimeout('document.getElementById("' + cdiv.id + '").rotate()', 100);
+        }
+        //]]>
+
+    </script>
+    <script language="JavaScript" type="text/javascript">
+<!--
+        //<![CDATA[
+        function open_window(name, url, left, top, width, height, toolbar, menubar, statusbar, scrollbar, resizable) {
+            toolbar_str = toolbar ? 'yes' : 'no';
+            menubar_str = menubar ? 'yes' : 'no';
+            statusbar_str = statusbar ? 'yes' : 'no';
+            scrollbar_str = scrollbar ? 'yes' : 'no';
+            resizable_str = resizable ? 'yes' : 'no';
+
+            cookie_str = document.cookie;
+            cookie_str.toString();
+
+            pos_start = cookie_str.indexOf(name);
+            pos_end = cookie_str.indexOf('=', pos_start);
+
+            cookie_name = cookie_str.substring(pos_start, pos_end);
+
+            pos_start = cookie_str.indexOf(name);
+            pos_start = cookie_str.indexOf('=', pos_start);
+            pos_end = cookie_str.indexOf(';', pos_start);
+
+            if (pos_end <= 0) pos_end = cookie_str.length;
+            cookie_val = cookie_str.substring(pos_start + 1, pos_end);
+            if (cookie_name == name && cookie_val == "done")
+                return;
+
+            window.open(url, name, 'left=' + left + ',top=' + top + ',width=' + width + ',height=' + height + ',toolbar=' + toolbar_str + ',menubar=' + menubar_str + ',status=' + statusbar_str + ',scrollbars=' + scrollbar_str + ',resizable=' + resizable_str);
+        }
+        //]]>
+
+// -->
+    </script>
+    <script type="text/javascript" language="javascript">
+     //<![CDATA[
+        function chooseStyle(title, ss) {
+            var lnks = document.getElementsByTagName('link');
+            for (var i = lnks.length - 1; i >= 0; i--) {
+                if (lnks[i].getAttribute('rel').indexOf('style') > -1 && lnks[i].getAttribute('title')) {
+                    lnks[i].disabled = true;
+                    if (lnks[i].getAttribute('title') == title) lnks[i].disabled = false;
+                }
+            }
+        }
+     //]]>
+    </script>
+    <script>
+        settings = new Array();
+        settings["searchServer"] = "http://goisas.nic.in";
+
+        settings["textBoxId"] = "q";
+        settings["callBackFunction"] = "callBack";
+        loadSuggestionControls(settings);
+
+        function callBack() {
+            settings["q"] = document.getElementById('q').value;
+            settings["count"] = "10";
+            settings["site"] = "mandsaur.nic.in";
+            loadResultControls(settings);
+        }
+
+        settings = new Array();
+        settings["searchServer"] = "http://goisas.nic.in";
+        settings["textBoxId"] = "q";
+        settings["q"] = "";
+        settings["site"] = "mandsaur.nic.in";
+        loadResultControls(settings);
+
+    </script>
+    <link rel="stylesheet" type="text/css" href="js1/style(1).css" media="screen">
+    <!-- <script type="text/javascript" src="js1/jquery.js"></script>
+   -->
+    <style>
+        #wows1_1
+        {
+            width: 450px;
+            height: 300px;
+        }
+        #wows1_2
+        {
+            width: 450px;
+            height: 300px;
+        }
+        #wows1_3
+        {
+            width: 450px;
+            height: 300px;
+        }
+        
+        #wows1_4
+        {
+            width: 450px;
+            height: 300px;
+        }
+        #wows1_5
+        {
+            width: 450px;
+            height: 300px;
+        }
+        #wows1_6
+        {
+            width: 450px;
+            height: 300px;
+        }
+        
+        #menu1
+        {
+            width: 930px;
+            height: 28px;
+            margin: 0 auto;
+            clear: both;
+        }
+        .menu1
+        {
+            width: 930px;
+            height: 28px;
+            margin: 0 auto;
+            clear: both;
+        }
+        /* NAVIGATION */
+        
+        #navcontainer ul
+        {
+            padding-left: 0;
+            margin-left: 0;
+            margin-right: 0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            background-color: #8B3A62;
+            color: #FFFFFF;
+            float: left;
+            width: 100%;
+            font-family: verdana, arial, helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        
+        
+        #navcontainer ul li
+        {
+            display: inline;
+        }
+        
+        
+        
+        #navcontainer ul li a
+        {
+            padding: 10px 15px;
+            background-color: #8B3A62;
+            color: #FFFFFF;
+            text-decoration: none;
+            float: left;
+            border-right: 1px solid #fff;
+        }
+        
+        #navcontainer ul li a:hover
+        {
+            background-color: #D8D8D8;
+            color: #111111;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body style="margin-top: 0px; margin-left: 0px; margin-right: 0px; margin-bottom: 0px;"
+    bgcolor="#ffffcc">
+    <div style="max-width: 930px; margin-left: auto; margin-right: auto; border: 2px solid black;
+        text-align: center">
+        <table border="0px" cellpadding="0px" cellspacing="0px" style="border-collapse: collapse;
+            border-color: #111111" width="100%">
+            <tr>
+                <td align="right" colspan="3" width="50%" class="box-bg">
+                    <a href="javascript:open_window('Screen Reader', 'screenreader.htm', 0, 0, 660, 700, 0, 0, 0, 0, 0)"
+                        target="_self" class="links1" style="font-size: 10pt">Screen Reader Access</a>|<a
+                            href="#main" class="links1" style="font-size: 10pt">Skip to main content</a>|<a href="#top"
+                                class="links1" style="font-size: 10pt">Skip to navigation</a>|<a href="javascript:chooseStyle('small', 60);"
+                                    title="Smaller Size" class="links1">A-</a> <a href="javascript:chooseStyle('none', 60);"
+                                        title="Default Size" class="links1">A</a> <a href="javascript:chooseStyle('bigger', 60);"
+                                            title="Bigger Size" class="links1">A+</a>| <a href="DefaultH.htm" style="font-size: 10pt"
+                                                class="links1">हिन्दी</a>
+                    <form style="display: inline" action="searchweb.htm" target="mds" class="pink">
+                    <select onchange="document.bgColor=this.options[this.selectedIndex].value" style="font-size: 10pt">
+                        <option value="FFFFCC">
+                        Select Theme
+                        <option value="FFFFCC">
+                        Light Yellow
+                        <option value="CCFFFF">
+                        Light Blue
+                        <option value="CCFFCC">
+                        Light Green
+                        <option value="CCCCCC">
+                        Gray
+                        <option value="F5F5DC">
+                        Beige
+                        <option value="FFE4C4">
+                        Bisque
+                        <option value="FF7F50">
+                        Coral
+                        <option value="C0C0C0">
+                        Silver
+                        <option value="87CEEB">
+                        Skyblue
+                        <option value="D2B48C">
+                        Tan
+                        <option value="FFE4B5">
+                        Moccasin
+                        <option value="F0E68C">
+                        Khaki
+                        <option value="FFFFFF">
+                        White
+                    </select>
+                    <input size="5px" type="text" name="q" id="q" onfocus="if(this.value=='Search Within Website')this.value='';"
+                        onblur="if(this.value=='')this.value='Search Within Website';" value="Search Within Website"
+                        style="width: 120px; font-size: 11px" title="Enter Your Search Text" />
+                    <input type="submit" value="Go" style="font-size: 11px" title="Click Here for Search" />
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td width="25%" align="left">
+                    &nbsp; &nbsp; &nbsp;
+                    <img style="border: 0" alt="Satyamev Jayate" src="images/mp_logo.gif" />
+                </td>
+                <td style="width: 50%; height: 112px;" align="center">
+                    <span style="font-family: Cambria; color: #7f623a; font-weight: bold;">Welcome to The
+                        city of Lord Pashupatinath</span>
+                    <br />
+                    <span style="font-family: Cambria; font-size: 45pt; font-weight: bold; color: #7f623a">
+                        Mandsaur</span>
+                    <br />
+                    <span style="font-family: Monotype Corsiva; color: #7f623a; font-size: 14pt;">A District
+                        of Madhya Pradesh</span>
+                </td>
+                <td align="center" style="padding-bottom: 5px; width: 25%; height: 112px;">
+                    <!--<img src="images/defaul1.jpg" alt="Master Plan" style="border: 2px solid #00080;
+                    text-align: left; height: 128px; width: 112px;" start="fileopen" />-->
+                    <script type="text/javascript">
+                        carousel({ id: 'Pashupati', //Enter arbitrary but unique ID of this slideshow instance
+                            border: '',
+                            size_mode: 'image', //Enter "carousel" or "image". Affects the width and height parameters below.
+                            width: 110, //Enter width of image or entire carousel, depending on above value
+                            height: 115, //Enter height of image or entire carousel, depending on above value
+                            sides: 5, //# of sides of the carousel. What's shown = sides/2. Even integer with sides/2 total images is best
+                            steps: 23, //# of animation steps. More = smoother, but more CPU intensive
+                            speed: 4, //Speed of slideshow. Larger = faster.
+                            direction: 'left', //Direction of slideshow. Enter "top", "bottom", "left", or "right"
+                            images: ['pimages/image1.jpg',
+                  'pimages/image2.jpg',
+                  'pimages/image3.jpg',
+                  'pimages/image4.jpg',
+                  'pimages/image5.jpg',
+				  'pimages/image6.jpg',
+				  'pimages/image7.jpg',
+				  'pimages/image8.jpg'],
+                            links: ['', //enter link URLs, or for no links, empty array instead (links :[])
+									'',
+									'',
+									''],
+                            titles: ['Shri Pashupati nath1',
+             	'Shri Pashupati nath2',
+    	     'Shri Pashupati nath3',
+               'Shri Pashupati nath4',
+            'Shri Pashupati nath5',
+            'Shri Pashupati nath6', 'Shri Pashupati nath7', 'Shri Pashupati nath7'],
+                            image_border_width: 1,
+                            image_border_color: 'black'
+                        });
+                    </script>
+                    <br />
+                </td>
+            </tr>
+        </table>
+        <script language="javascript" type="text/javascript" src="engine1/wowslider.js"></script>
+        <script language="javascript" type="text/javascript" src="engine1/script.js"></script>
+        <a name="top"></a>
+        
+        <table border="0px" class="box-bg" cellpadding="0px" cellspacing="0px" style="border-top: 2px solid;
+            border-bottom: 2px solid; border-color: #7f623a" width="100%">
+            <tr>
+                <td style="width: 21%; height: 29px; height: 29px;" rowspan="2" align="center">
+                    <a href="http://india.gov.in/" class="links">
+                        <img alt="" src="images1/banner3.gif" width="115" style="height: 25px; border: 0px" /></a>
+                </td>
+                <td style="width: 27%; height: 29px;" rowspan="2" align="center">
+                    <a href="http://dic.mp.nic.in/mandsaur/jansunvai/Default.aspx?str=mandsaur" target="_blank"
+                        class="links">Jansunvai/TL/PGR&nbsp;</a>
+                </td>
+                <!--<td style="width: 19%; height: 29px;" rowspan="2" align="left">
+                <a href="http://dic.mp.nic.in/rajgarh/dsms/login_new.aspx" target="_blank" class="links">
+                    Dept. Scheme Monitoring </a>
+            </td>-->
+                <td style="width: 13%; height: 29px;" rowspan="2" align="center">
+                    <a href="http://districts.nic.in/disdetails.aspx?str_state=bXA=" target="_blank"
+                        class="links">Districts of MP</a>
+                    <!--<a href="contactus.htm" class="links">Contact Us</a>-->
+                </td>
+                <td style="width: 24%; text-align: left; height: 29px;">
+                    <a href="http://shripashupatinath.nic.in/" class="links" target="_blank">Shri Pashupatinath
+                        Temple Website</a>
+                </td>
+                <td style="width: 15%; height: 29px;" align="center">
+                    <a href="Master%20Plan/Master_Plan.htm" class="links">Temple's Master Plan</a>
+                </td>
+            </tr>
+        </table>
+        <!-- Begin Menu Bar -->
+        <div id="menu1">
+            <div id="navcontainer">
+                <ul id="navlist">
+                    <li><a href="default.htm">
+                        <img src="images/home-icon.png" alt="Home icon" height="17" width="17" /></a> <a
+                            href="overview.htm">Overview</a><a href="profile.htm">Statistical Profile</a>
+                        <a href="Train.htm">Trains</a> <a href="tour.htm">Tourism</a> <a href="education.htm">
+                            Educational Institutes </a><a href="Comm_Coll.htm">Commissioners &amp; Collectors</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <table border="2px" class="menu1" cellpadding="0px" cellspacing="0px" style="border-top: 2px solid #7f623a;
+            border-collapse: collapse; margin-top: 4px; margin-bottom: 2px; border-color: #7f623a"
+            width="100%">
+            <tr>
+                <td style="width: 15%; border-right: 2px solid #7f623a;" align="center" height="28"
+                    bgcolor="#8B3A62">
+                </td>
+                <td style="width: 15%; border-right: 2px solid #7f623a;" align="center" height="28"
+                    bgcolor="#8B3A62">
+                    <a href="dmap.htm" class="links1M">District MAP</a>
+                </td>
+                <td style="width: 18%; border-right: 2px solid #7f623a;" align="center" height="28"
+                    bgcolor="#8B3A62">
+                    <a href="nicmds.htm" class="links1M">NIC District Centre</a>
+                </td>
+                <td style="border-right: 2px solid #7f623a;" align="center" height="28" bgcolor="#8B3A62"
+                    class="style1">
+                    <a href="trade.htm" class="links1M">Trade</a>
+                </td>
+                <td style="width: 16%; border-right: 2px solid #7f623a;" align="center" height="28"
+                    bgcolor="8B3A62">
+                    <a href="dept.htm" class="links1M">Govt. Departments</a>
+                </td>
+                <td style="width: 23%; border-right: 2px solid #7f623a;" align="center" height="28"
+                    bgcolor="#8B3A62">
+                    <a href="contactus.htm" class="links1M">Contact Us</a>
+                </td>
+            </tr>
+        </table>
+        <a name="main"></a>
+        <table style="width: 100%;">
+            <tr>
+                <td align="center" style="height: 20px">
+                    <!--<a class="links1" onclick="javascript:window.open('webcast.htm')" href="#" title="Bye Election Webcasting">
+                        Webcasting Garoth Assembly Bye Election-2015 </a>-->
+                   <a class="links1" onclick="javascript:window.open('DistrictElectionOffice/Elec18Vidhan.htm')" href="#"
+                                            title="Distrcit election office">
+                                          <span style="font-family: Cambria; font-size: 20pt; font-weight: bold; color: #7f623a">
+                          जिला निर्वाचन कार्यालय मंदसौर </span> <img height="14" alt="" src="images1/newicon.gif" width="20"
+                                                border="0" /></a>
+                                                 
+            </tr>
+        </table>
+         
+            <a class="links1" onclick="javascript:window.open('Devsthan.htm')" href="#" title="Government-controlled Devsthan, their land and other information">
+                        Government-controlled Devsthan, their land and other information</a>
+                </td>
+        <table border="0px" cellpadding="0px" cellspacing="0px" style="border-collapse: collapse;
+            border-color: #111111; height: 192px; font-size: 12pt; font-family: Times New Roman;
+            width: 100%;">
+            <tr>
+                <td width="16%" align="center" class="box-bg" style="text-align: center; vertical-align: top;"
+                    rowspan="2">
+                    <table style="text-align: left;" cellspacing="0" cellpadding="0" width="100%" border="0">
+                        <tbody>
+                            <tr>
+                                <td class="menu" align="left" bgcolor="#7f623a" style="height: 10px">
+                                    Citizen
+                                </td>
+                            </tr>
+                            <tr style="border: 1px; border-color: red">
+                                <td style="height: 40px; border: 1px;" class="left-links1">
+                                    &nbsp;<a title="Mandsaur Dialy News मन्द्सौर दैनिक समाचार" href="Disclaimer.htm?http://dprmp.org/DistrictNews.aspx?disid=46&amp;disname=Mandsaur"
+                                        target="_blank" class="links1"><i>Daily News</i> </a>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 40px; border: 1px;" class="left-links1">
+                                    <a title="Khasra/B1 Report" href="http://landrecords.mp.gov.in/tehsil.asp?distcode=16"
+                                        target="_blank" class="links1">Khasra/B1 Report</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 40px; border: 1px;" class="left-links1">
+                                    <a title="AGMARKET" href="http://agmarknet.nic.in/agnew/NationalBEnglish/MarketWiseDailyReport7.aspx?&amp;state1=MP&amp;district1=32"
+                                        target="_blank" class="links1">AGMARKET</a></td>
+                            </tr>
+                            <tr>
+                                <td style="height: 40px; border: 1px;" class="left-links1">
+                                    <a title="Disaster Plan" href="Disaster.htm" class="links1">Disaster Plan</a>
+                                </td>
+                            </tr>
+   <!--<                         <tr>
+                                <td style="height: 40px; border: 1px;" class="left-links1">
+                                    <a title="ग्राम पंचायत वार विभिन्न योजनओं में लाभांवित हित्ग्राहियों की सूची " href="BD.htm"
+                                        class="links1">Beneficiaries Details
+                                        <br />
+                                        (2009 to 2013)</a>
+                                </td>
+                            </tr>
+-->
+                            <tr>
+                                <td style="height: 40px;" class="left-links1">
+                                    <a title="MP Portal" href="http://mp.gov.in" target="_blank" class="links1">MP Portal</a>
+                                </td>
+                            </tr>
+<!--<                            <tr>
+                                <td style="height: 40px;" class="left-links1">
+                                    <a title="VYAPAM" href="http://vyapam.nic.in/" target="_blank" class="links1">VYAPAM</a>
+                                </td>
+                            </tr>
+-->                            <tr>
+                                <td style="height: 40px;" class="left-links1">
+                                    <a title="E-Scholarship" href="http://scholarshipportal.mp.nic.in" target="_blank"
+                                        class="links1">E-Scholarship</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 40px;" class="left-links1">
+                                    <a title="Wheat Procurement (e-Uparjan ), 2013 District Mandsaur (M.P.)" href="http://mpeuparjan.nic.in/"
+                                        target="_blank" class="links1">e-Uparjan </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 40px;" class="left-links1">
+                                    <a title="Education Portal" href="http://educationportal.mp.gov.in" target="_blank"
+                                        class="links1">Education Portal</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 40px; border: 1px;" class="left-links1">
+                                    <a title="GeoSearch" target="_blank" href="http://gismp.nic.in/GeoSearch/index.html?dc=19"
+                                        class="links1">
+                                        <img src="IMAGES/GEoSearch.gif" style="border: 0px" width="120" height="22" alt="Geosearch" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 40px; border: 1px;" class="left-links1">
+                                    <a href="http://mygov.nic.in" target="_blank">
+                                        <img src="images/mygov.jpg" width="140" height="48" alt="My Government" title="My Government" />
+                                    </a>
+                                    <br />
+                                    <br />
+                                    <a href="https://digilocker.gov.in/public/register" target="_blank">
+                                        <img src="images/digiLocker-Small.jpg" width="140" height="35" alt="" title="Your Documents Anytime, Anywhere" /></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td height="176" style="width: 4%">
+                    &nbsp;
+                </td>
+                <td width="47%" rowspan="2" style="border-style: solid; border-width: 2px; border-color: #7f623a;"
+                    align="center">
+                    <div id="middle" style="width: 97%">
+                        <!-- Start WOWSlider.com BODY section id=wowslider-container1 -->
+                        <center>
+                            <div id="wowslider-container1">
+                                <div class="ws_images">
+                                    <ul>
+                                        <li>
+                                            <img id="wows1_0" title="PashupatiNath" alt="Mandsaur PashupatiNath Mandir" src="images/Pimage.jpg"
+                                                height="300" width="450">
+                                        </li>
+                                        <li>
+                                            <img id="wows1_1" title="Nalcha Mata" alt="Nalcha Mata Mandir" src="images/Nalchamata450300.jpg">
+                                        </li>
+                                        <li>
+                                            <img id="wows1_2" title="Gandhi Sagar" alt="Gandhi Sagar" src="images/gandhi.jpg">
+                                        </li>
+                                        <li>
+                                            <img id="wows1_3" title="Railway Station" alt="Railway Station" src="images/Railwaystation.jpg">
+                                        </li>
+                                        <li>
+                                            <img id="wows1_4" title="opium" alt="opium" src="images/opium.jpg">
+                                        </li>
+                                        <!--   <li>
+                                            <img id="wows1_5" title="PashuPati Nath" alt="PashuPati Nath" src="pimages/image1.jpg">
+                                        </li>
+                                        <li>
+                                            <img id="wows1_6" title="PashuPati Nath" alt="PashuPati Nath" src="pimages/image2.jpg">
+                                        </li>
+                                        <li>
+                                            <img id="wows1_7" title="PashuPati Nath" alt="PashuPati Nath" src="pimages/image3.jpg">
+                                        </li>-->
+                                    </ul>
+                                </div>
+                                <a href="#" class="ws_frame"></a>
+                                <div class="ws_shadow">
+                                </div>
+                            </div>
+                            <script type="text/javascript" src="js1/wowslider.js"></script>
+                            <script type="text/javascript" src="js1/script.js"></script>
+                        </center>
+                        <!-- End WOWSlider.com BODY section -->
+                        <br />
+                        <h4 align="left">
+                            Welcome to Mandsaur
+                        </h4>
+                        <font color="#004a80">
+                            <p style="text-align: justify" class="links1">
+                                Mandsaur is rich in archaeological and historical heritage But what makes it famous
+                                is the temple of Lord Pashupatinath located on the bank of shivna. Its idol has
+                                parallel only in Nepal. The most common language is Malvi (Rajasthani and Hindi
+                                Mixed).It is also famous for large production of Opium around the world. The slate
+                                pencil industry is the main industry of the district.
+                            </p>
+                        </font>
+                        <br />
+                        <br />
+                    </div>
+                </td>
+                <td width="4%" height="176" valign="top">
+                </td>
+                <td width="16%" class="box-bg" style="text-align: center; vertical-align: top; border: 2"
+                    rowspan="2">
+                    <table style="text-align: left" cellspacing="0" cellpadding="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td class="menu" align="left" bgcolor="#7f623a" style="height: 10px">
+                                    Collector's Desk
+                                </td>
+                            </tr>
+                            <tr style="height: 280px;">
+                                <td style="text-align: center; padding-top: 5px">
+                                    <img src="opshrivastav.jpg" alt="Shri Om Prakash Shrivastava, IAS Collector Mandsaur" style="width: 138px;
+                                        height: 164px;" />
+                                    <br />
+                                    <strong><a href="#" class="links1">Shri Om Prakash Shrivastava</a></strong>
+                                    <br />
+                                    Collector And District Magistrate<br />
+                                    <br />
+                                    <!--  <a href="http://dial.gov.in/" target="_blank">
+                                    <img src="dialgov-logo_170x78.jpg" alt="" height="28" width="170" /></a><br />
+                                <br />-->
+                                </td>
+                            </tr>
+                            <!--
+
+                            <tr>
+                                <td class="menu" align="left" bgcolor="#7f623a" height="10">
+                                    Notice Board/Latest Updates
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 40px;" class="left-links1">
+                                    <a class="links1" onclick="javascript:window.open('news/tenderrelief.pdf')"
+                                        href="#" title="committee for purchasing of flood rescue equipment">Re-tender Notice : For purchasing of flood rescue equipments
+
+                                    <br />
+                                    <a class="links1" onclick="javascript:window.open('news/WCDvig.pdf')" href="#"
+                                        title="संविदा भर्ती (महिला शस्त्रीकरण)">संविदा भर्ती (महिला शस्त्रीकरण)<img height="14"
+                                            alt="" src="images1/newicon.gif" width="20" border="0" /></a>
+                                      
+                                </td>
+                            </tr>
+                            </a>-->
+
+                            <tr>
+                                <td class="menu" align="left" bgcolor="#7f623a" height="10">
+                                    Circular/Letter/Orders
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="left-links1">
+                                    <marquee direction="up" scrollamount="1" scrolldelay="20" style="height: 102px; width: 97%"
+                                        onmouseover="this.stop()" onmouseout="this.start()">
+                                        <a class="links1" onclick="javascript:window.open('news/NIVIDA.pdf')" href="#" 
+                                            title="  (Revised)" >
+                                           संशोधित अल्पकालीन निविदा विज्ञपित पंजीकृत असंगठित श्रमिकों  के परिचय पत्र एवं ब्रोशर आदि के  मुद्रण हेतु नियम निर्देश एवं निविदा  प्रपत्र  </a>
+                                                <br />
+                                                <br />
+                                        
+                                        <a class="links1" onclick="javascript:window.open('news/tenderdocument.pdf')" href="#" 
+                                            title="  (Revised)" >
+                                            आपदा बाढ  राहत  सामग्री  क्रय करने  हेतू  निविदा सूचना  </a>
+                                                <br />
+                                                <br />
+                                        
+                                                <a class="links1" onclick="javascript:window.open('news/ORDER.pdf')" href="#" 
+                                            title="  (Revised)" >
+                                            पटवारी भर्ती परीक्षा मे चयनित  अभ्यर्थियों   के समस्त दस्तावेजो  के सत्यापन एवं काउसिंलिंग के लिये आदेश 
+                                             </a>
+                                                <br />
+                                                </br>
+                                                <!--
+                                         
+                                               
+                                       <a class="links1" onclick="javascript:window.open('news/ORDER.pdf')" href="#" 
+                                            title="  (Revised)" >
+                                            पटवारी भर्ती परीक्षा मे चयनित  अभ्यर्थियों   के समस्त दस्तावेजो  के सत्यापन  की कार्यवाही स्थगित किये जाने के लिये प्रेस नोट    <img height="14" alt="" src="images1/newicon.gif" width="20"
+                                                border="0" /> </a>
+                                                <br />
+                                        <a class="links1" onclick="javascript:window.open('news/ORDER.pdf')" href="#" 
+                                            title="  (Revised)" >
+                                            पटवारी भर्ती परीक्षा मे चयनित  अभ्यर्थियों   के समस्त दस्तावेजो  के सत्यापन एवं काउसिंलिंग के लिये आदेश 
+                                                 </a>
+                                                <br />
+                                                
+                                        <a class="links1" onclick="javascript:window.open('news/JheelMahotsav1.pdf')" href="#" 
+                                            title=" Jheel Mahotsav Tender Procedure (Revised)" >
+                                            Jheel Mahotsav Tender Procedure (Revised) <img height="14" alt="" src="images1/newicon.gif" width="20"
+                                                border="0" /> </a>
+                                        <br />
+                                        <!--
+                                        <a class="links1" onclick="javascript:window.open('news/NIVIDA.pdf')" href="#" 
+                                            title="  (Revised)" >
+                                            पंजीकृत असंगठित श्रमिकों  के परिचय पत्र एवं ब्रोशर आदि के  मुद्रण हेतु नियम निर्देश एवं निविद प्रपत्र <img height="14" alt="" src="images1/newicon.gif" width="20"
+                                                border="0" /> </a>
+                                        <a class="links1" onclick="javascript:window.open('news/tender document.pdf')" href="#" 
+                                            title="  (Revised)" >
+                                            आपदा प्रबधन  सामग्री  क्रय  हेतू  निविदा <img height="14" alt="" src="images1/newicon.gif" width="20"
+                                                border="0" /> </a>
+                                                <br />
+                                        <a class="links1" onclick="javascript:window.open('news/List Patra Candidates.pdf')"
+                                            href="#" title="समग्र कम्‍प्‍यूटर ऑपरेटर सह सहायक ग्रेड-3 पात्र की सूची">समग्र-सामाजिक
+                                            सुरक्षा मिशन हेतु कम्‍प्‍यूटर ऑपरेटर सह सहायक ग्रेड-3 पात्र की सूची </a>
+                                        <br />
+                                        <a class="links1" onclick="javascript:window.open('news/List Apatra Candidates.pdf')"
+                                            href="#" title="समग्र कम्‍प्‍यूटर ऑपरेटर सह सहायक ग्रेड-3 अपात्र की सूची">समग्र-सामाजिक
+                                            सुरक्षा मिशन हेतु कम्‍प्‍यूटर ऑपरेटर सह सहायक ग्रेड-3 अपात्र की सूची </a>
+                                        <br />
+ 
+                                        <a class="links1" onclick="javascript:window.open('news/SSSMVigyapti 2016.pdf')"
+                                            href="#" title="समग्र-सामाजिक सुरक्षा मिशन हेतु कम्प्यूटर ऑपरेटर सह-सहायक ग्रेड-3 (संविदा) भर्ती हेतु विज्ञापन">
+                                            समग्र-सामाजिक सुरक्षा मिशन हेतु कम्प्यूटर ऑपरेटर सह-सहायक ग्रेड-3 (संविदा) भर्ती
+                                            हेतु विज्ञापन</a>
+                                        </a>--> 
+
+                                        <br />
+                                         <!--
+                                        
+                                        <a class="links1" onclick="javascript:window.open('news/Data_Op_SocialJustice.pdf')"
+                                            href="#" title="संविदा कम्प्युटर ऑपरेटर भर्ती (सामाजिक न्याय विभाग)">संविदा कम्प्युटर ऑपरेटर भर्ती (सामाजिक न्याय विभाग)
+                                            <img height="14" alt="" src="images1/newicon.gif" width="20" border="0" /></a>
+                                        <br />
+                                       
+                                        लोक सेवा केंद्र के टेंडर की तकनीकी निविदा लिस्ट &nbsp;
+                                        <br />
+                                        <a onclick="javascript:window.open('lokseva/daloda.jpeg')" href="#" style="color: green">
+                                            दलोदा</a>&nbsp;&nbsp; <a onclick="javascript:window.open('lokseva/suwasara.jpeg')"
+                                                href="#" style="color: CadetBlue">सुवासरा</a>&nbsp;&nbsp; <a onclick="javascript:window.open('lokseva/shamgarh.jpeg')"
+                                                    href="#" style="color: red">शामगढ़</a>
+                                        <br />
+                                        <a class="links1" onclick="javascript:window.open('lokseva/Districts Pre Bid Queries.pdf')"
+                                            href="#" title="प्री-बिड की प्रश्नावली">Pre bid queries</a>
+                                        <br />
+                                        <br />
+                                        <a class="links1" onclick="javascript:window.open('lokseva/Corrigendum 1 LSK v3.pdf')"
+                                            href="#" title="निविदा से सम्बंधित शुद्धिपत्र">Corrigendum </a>
+                                        <br />
+                                        <br />
+
+                                        <a class="links1" onclick="javascript:window.open('news/ChangeInPreBidConferenceDate.pdf')"
+                                            href="#" title="Change in Pre-Bid Conference Date">Change in Pre-Bid Conference
+                                            Date</a>
+
+                                        <br />
+                                        <br />
+                                        नवीन लोक सेवा केंद्र खोले जाने हेतु RFP की जानकारी &nbsp;<img height="14" alt=""
+                                            width="20" border="0" />
+                                        <br />
+                                        <br />
+                                        <a onclick="javascript:window.open('lokseva/new-DALODA1.pdf')" href="#" style="color: green">
+                                            दलोदा</a>&nbsp;&nbsp; <a onclick="javascript:window.open('lokseva/new-SUWASARA1.pdf')"
+                                                href="#" style="color: CadetBlue">सुवासरा</a>&nbsp;&nbsp; <a onclick="javascript:window.open('lokseva/new-SHAMGARH1.pdf')"
+                                                    href="#" style="color: red">शामगढ़</a>
+                                        
+                                        <br />
+                                        <br />
+                                        <a class="links1" onclick="javascript:window.open('news/SCST_Census.pdf')" href="#"
+                                            title="विशेष भर्ती अभियान के तहत नि:शक्तजन के लिये वाँक-इन-इन्टरव्यु के माद्यम से की जाने वाली भर्ती हेतु विज्ञापन">
+                                            SC/ST Census Villagewise <img height="14" alt="" src="images1/newicon.gif" width="20"
+                                                border="0" /></a>
+                                        <br />
+                                        <br />
+                                        <a class="links1" onclick="javascript:window.open('LandGuideline/guide_line_new_2015-16.pdf')"
+                                            href="#" title="Proposed guideline (Land) for year 2015-16">Guidelines (Land) for
+                                            year 2015-16</a>
+                                        <br />
+                                        <a class="links1" onclick="javascript:window.open('news/SarveJanikSuchana.pdf')"
+                                            href="#" title="Public Information/Notification">सार्वजनिक सूचना/विज्ञप्ति</a>
+                                        <br />
+                                        <!--
+                                        <a class="links1" onclick="javascript:window.open('news/FF/FreeDomFightermandsaur.pdf')"
+                                            href="#" title="Freedom Fighter From Mandsaur">Freedom Fighter From Mandsaur
+                                        </a>-->
+
+                                        </marquee>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <br />
+                                    <a href="http://digitalindia.gov.in/" target="_blank">
+                                        <img src="Images1/digitalindia.jpg" alt="" title="Digital India- Power To Empower "
+                       
+                                </td style="width: 156px; height: 53px">
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 17px; width: 20px;">
+                </td>
+                <td style="height: 17px">
+                </td>
+            </tr>
+            <tr>
+                <td width="16%" style="height: 19px" class="box-bg">
+                    <!--<table style="text-align: left" cellspacing="0" cellpadding="0" width="100%" border="0">
+                        <tbody>
+                          
+                            <tr>
+                                <td class="menu" align="left" bgcolor="#7f623a" height="10">
+                                
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>-->
+                </td>
+                <td style="height: 19px; width: 20px;">
+                    &nbsp;
+                </td>
+                <td align="right" width="47%" style="height: 19px;">
+                    <a href="Disclaimer.htm?http://mandsaur.nic.in/rcbc/index.html" target="_blank" class="links1"
+                        style="float: left"><font><strong>Regional Capacity Building Centre (RCBC)gional Capacity Building Centre (RCBC)gional Capacity Building Centre (RCBC)</strong></font></a>
+                    <a href="usefullinks.htm" class="links1">Other Useful Links&nbsp;</a>
+                    <table width="100%">
+                        <tr>
+                            <td colspan="2" align="left">
+                                <a href="deptSchemes.htm" class="links1" target="_blank" style="float: left">Departmental
+                                    schemes Forms and Information </a><a href="RTI.htm" class="links1" style="float: right">
+                                        <font><strong>Right to Information (RTI)</strong></font></a>
+                                <!--                  <a href="TelephoneDirectory.htm" class="links1" style="float:right "><font><strong>District Telephone Directory</strong></font></a>-->
+                                <!--<marquee scrolldelay="50" scrollamount="2">
+                                <b>गेंहू उपार्जन वर्ष 2013 हेतु किसानों का पंजीयन 15-12-2012 से 24-01-2013 तक होगा|</b></marquee>-->
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="height: 19px">
+                    &nbsp;
+                </td>
+                <td style="text-align: center; height: 19px;" width="16%" class="box-bg">
+                    <table style="text-align: left" cellspacing="0" cellpadding="0" width="100%" border="0">
+                        <tbody>
+                            <!--
+                   
+
+                     <p class="links2" style="font-size: 11pt">
+                        <a class="links2a" onclick="javascript:window.open('news/HandBook2013.pdf')"
+                            href="#" title="जिला सांख्यिकी पुस्तिका">1. जिला सांख्यिकी पुस्तिका-2013</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="links2a" onclick="javascript:window.open('news/ZILEKEAKDE2013.pdf')"
+                            href="#" title="जिला सांख्यिकी पुस्तिका">2. जिले के प्रमुख आंकडे वर्ष -2013</a>
+                      
+                    </p>
+                    
+                    <p class="links2" style="font-size: 11pt">
+                        <a class="links2a" onclick="javascript:window.open('news/HandBook201205082014.pdf')"
+                            href="#" title="जिला सांख्यिकी पुस्तिका">1. जिला सांख्यिकी पुस्तिका-2012</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="links2a" onclick="javascript:window.open('news/ZILEKEPRAMUKAKDE2012.pdf')"
+                            href="#" title="जिला सांख्यिकी पुस्तिका">2. जिले के प्रमुख आंकडे वर्ष -2012</a>
+                        
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/formatsamajikaarthik2011.pdf')"
+                            href="#" title="सामाजिक-आर्थिक एवं जाति जनगणना-2011-अंतर्गत दावे-आपत्तियों हेतु विहित प्रपत्र (ग्रामीण क्षेत्र) ">
+                            सामाजिक-आर्थिक एवं जाति जनगणना-2011-अंतर्गत दावे-आपत्तियों हेतु विहित प्रपत्र (ग्रामीण
+                            क्षेत्र) </a>
+                        
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/CMrojgaryojna.pdf')" href="#"
+                            title="मुख्यमंत्री शहरी घरेलू कामकाजी प्रशिक्षण में चयनित प्रशिक्षार्णिर्थीयो की सूची वर्ष 2013-14  ">
+                            मुख्यमंत्री शहरी घरेलू कामकाजी प्रशिक्षण में चयनित प्रशिक्षार्णिर्थीयो की सूची वर्ष
+                            2013-14 </a>
+                       
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/najul.pdf')" href="#" title="प्रा.कृ. सा. संस्था व्दारा महात्मा गांधी राष्ट्रीय रोजगार गारन्टी योजनांतर्गत ग्रामीण क्षेत्रों में अनाज भंडारण गोदाम निर्माण हेतु शासकीय भूमि की मांग">
+                            प्रा.कृ. सा. संस्था व्दारा महात्मा गांधी राष्ट्रीय रोजगार गारन्टी योजनांतर्गत ग्रामीण
+                            क्षेत्रों में अनाज भंडारण गोदाम निर्माण हेतु शासकीय भूमि की मांग</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/Tender1177.pdf')" href="#"
+                            title="अनुसूचित जाति ग्रामीण विद्युतीकरण योजनान्तर्गत निविदा आमंत्रण सूचना 2316">
+                            अनुसूचित जाति ग्रामीण विद्युतीकरण योजनान्तर्गत निविदा आमंत्रण सूचना </a>
+                    </p>
+                    <p class="links2" style="font-size: 11pt">
+                        <a class="links2a" onclick="javascript:window.open('news/Bye Laws of tourism society.pdf')"
+                            href="#" title="Bye Laws Dashpur Paryatan vikas parishad, Mandsaur">Bye-Laws Dashpur
+                            Paryatan Vikas Parishad, Mandsaur </a>
+                    </p>
+                    <p class="links2" style="font-size: 8pt">
+                        <a class="links2a" onclick="javascript:window.open('news/circularMandsaur.pdf')"
+                            href="#" title="Data Entry Operator cum PDA Assistant (Contract) Advertisement ZP">
+                            मुख्‍यमंत्री ग्रामीण आवास मिशन अंतर्गत डाटा ऐन्‍टी ऑपरेटर सह कार्यालय सहायक सह पीडीए
+                            ऑपरेटर (संविदा) सबंधी विज्ञापन </a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('LandGuideline/mandsaur_registration.pdf')"
+                            href="#" title="Proposed guideline (Land) for year 2014-15">Guidelines (Land) for
+                            year 2014-15</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/swarn jayanti rojgar yojna.pdf')"
+                            href="#" title="स्वर्ण जयंती शहरी रोजगार योजना में कौशल उन्नयन प्रशिक्षण की वित्तीय दरें प्रस्तुत करने बाबत">
+                            स्वर्ण जयंती शहरी रोजगार योजना में कौशल उन्नयन प्रशिक्षण की वित्तीय दरें प्रस्तुत
+                            करने बाबत।</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/DISTRICTURBANDEVELOPMENTAUTHORITY.pdf')"
+                            href="#" title="DISTRICTURBANDEVELOPMENTAUTHORITY">Svarn Jayanti Shahri Rojgar Prishishan
+                            Karykram Year 2012-13</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/FF/FreeDomFightermandsaur.pdf')"
+                            href="#" title="Freedom Fighter From Mandsaur">स्वतंत्रता-संग्राम सैनानी, मन्दसौर
+                        </a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/Duda List Mandaur.pdf')"
+                            href="#" title="स्वर्ण जयन्ती शहरी स्व-रोजगार (फोकस टाउन) योजनांतर्गत, प्रशिक्षणार्थियों की सूची">
+                            स्वर्ण जयन्ती शहरी स्व-रोजगार (फोकस टाउन) योजनांतर्गत, प्रशिक्षणार्थियों की सूची
+                        </a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/CED MAPE.pdf')" href="#"
+                            title="शहरी घरेलु कामकाजी महिलाओं को प्रदाय की जाने वाली स्टाई फण्ड राशि की सूची ">
+                            शहरी घरेलु कामकाजी महिलाओं को प्रदाय की जाने वाली स्टाई फण्ड राशि की सूची </a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/higheducationloan.pdf')"
+                            href="#" title="ऑनलाइन उच्च शिक्षा ऋण प्रणाली का प्रचार - प्रसार एवं उच्च शिक्षा ऋण शिविर का आयोजन ">
+                            ऑनलाइन उच्च शिक्षा ऋण प्रणाली का प्रचार - प्रसार एवं उच्च शिक्षा ऋण शिविर का आयोजन</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/Guideline2013-14.pdf')"
+                            href="#" title="मध्यप्रदेश बाजार मूल्य मार्गदर्शक सिद्धांतो का बनाया जाना और उनका पुनरीक्षण नियम, 2000 के तहत बाजार मूल्यों की गाईड लाईन वर्ष 2013-14 ">
+                            मध्यप्रदेश बाजार मूल्य मार्गदर्शक सिद्धांतो का बनाया जाना और उनका पुनरीक्षण नियम,
+                            2000 के तहत बाजार मूल्यों की गाईड लाईन वर्ष 2013-14</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/energy.pdf')" href="#" title="Flate Rate Yojna and Kisan Samridhi Yojna">
+                            फ्लैट रेट योजना एवं किसान समृध्दि योजना के क्रियांवयन के संबंध मे </a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/Vatinary_Roster.pdf')" href="#"
+                            title="horti oshdhi first bhugtan 12-13">ग्रामो पंचायतो मे उपस्थित रहने संबंधि अधिनस्थो
+                            का संस्थावार रोस्टर</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/horti oshdhi first bhugtan 12-13.pdf')"
+                            href="#" title="horti oshdhi first bhugtan 12-13">उद्यानिकी मिशन योजनांतर्गत वर्ष
+                            2011-12 में कृषको की अनुदान किस्त हेतु सूची</a>
+                    </p>
+                    <p class="links2" style="font-size: 10pt">
+                        <a class="links2a" onclick="javascript:window.open('news/AccessorymineralsauctionsReleases.pdf')"
+                            href="#" title="Accessory minerals auctions Releases">विज्ञप्ति - गौण खनिज की नीलामी</a>
+                    </p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/RBC_beneficiaries.pdf')"
+                            href="#" title="Till November">RBC Beneficiaries</a>
+                    </p>
+                    <p class="links2" style="font-size: 10pt">
+                        <a class="links2a" onclick="javascript:window.open('news/PanchayatsecReq.pdf')" href="#">
+                            विज्ञप्ति - पंचायत सचिव भर्ती </a>
+                    </p>
+                    <p class="links2" style="font-size: 10pt">
+                        <a class="links2a" onclick="javascript:window.open('news/ListofSactionedwork25082012.pdf')"
+                            href="#">अनु. जनजाति बस्ती विकास योजनान्तर्गत स्वीकृत कार्यो की सूची वर्ष 2012-13</a>
+                    </p>
+                    <p class="links2" style="font-size: 10pt">
+                        <a class="links2a" onclick="javascript:window.open('news/TenderInformation25082012.pdf')"
+                            href="#">विद्युतीकरण योजनान्तर्गत स्वीकृत कार्यो की निविदा आमंत्रण सूचना </a>
+                    </p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/PreBidConferenceMandasur.pdf')"
+                            href="#">Pre Bid Conference (RFP Documents) 08-06-2012 </a>
+                    </p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/ServiceAreaPlanforFI.pdf')"
+                            href="#">State Level Bankers' Committee Service Area Plan </a>
+                    </p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/15th Excuting Commitee.pdf')"
+                            href="#">15 Points Executing Commitee (Tribal)</a>
+                    </p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/SRMS_Beneficiaries.pdf')"
+                            href="#">SRMS Beneficiaries</a></p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/labour list.pdf')" href="#">
+                            Registerd Labour List</a></p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/audit_kandika_08-09.pdf')"
+                            href="#">SGSY</a></p>
+                    <p class="links2">
+                        <a class="links2a" href="LoksevaRFP.htm">RFP Document(Loksewa)</a>
+                    </p>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                     <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('LandGuideline/guide_line_new_2015-16.pdf')"
+                            href="#" title="Proposed guideline (Land) for year 2015-16">Guidelines (Land) for year 2015-16</a>
+                              <img height="14" alt="" src="images1/newicon.gif" width="20" border="0" />
+                    </p>
+                      <p class="links2" style="font-size: 11pt">
+                        <a class="links2a" onclick="javascript:window.open('news/SarveJanikSuchana.pdf')"
+                            href="#" title="Public Information/Notification">सार्वजनिक सूचना/विज्ञप्ति</a>
+                        <img height="14" alt="" src="images1/newicon.gif" width="20" border="0" />
+                    </p>
+
+                    <p class="links2" style="font-size: 11pt">
+                        <a class="links2a" onclick="javascript:window.open('news/HandBook2014.pdf')"
+                            href="#" title="जिला सांख्यिकी पुस्तिका">1. जिला सांख्यिकी पुस्तिका-2014</a>
+                     
+                        <img height="14" alt="" src="images1/newicon.gif" width="20" border="0" />
+                    </p>
+                     <p class="links2" style="font-size: 11pt">
+                        <a class="links2a" onclick="javascript:window.open('news/HandBook2013.pdf')"
+                            href="#" title="जिला सांख्यिकी पुस्तिका">1. जिला सांख्यिकी पुस्तिका-2013</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="links2a" onclick="javascript:window.open('news/ZILEKEAKDE2013.pdf')"
+                            href="#" title="जिला सांख्यिकी पुस्तिका">2. जिले के प्रमुख आंकडे वर्ष -2013</a>
+                        <img height="14" alt="" src="images1/newicon.gif" width="20" border="0" />
+                    </p>
+                    
+                    <p class="links2" style="font-size: 11pt">
+                        <a class="links2a" onclick="javascript:window.open('news/HandBook201205082014.pdf')"
+                            href="#" title="जिला सांख्यिकी पुस्तिका">1. जिला सांख्यिकी पुस्तिका-2012</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="links2a" onclick="javascript:window.open('news/ZILEKEPRAMUKAKDE2012.pdf')"
+                            href="#" title="जिला सांख्यिकी पुस्तिका">2. जिले के प्रमुख आंकडे वर्ष -2012</a>
+                       
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/formatsamajikaarthik2011.pdf')"
+                            href="#" title="सामाजिक-आर्थिक एवं जाति जनगणना-2011-अंतर्गत दावे-आपत्तियों हेतु विहित प्रपत्र (ग्रामीण क्षेत्र) ">
+                            सामाजिक-आर्थिक एवं जाति जनगणना-2011-अंतर्गत दावे-आपत्तियों हेतु विहित प्रपत्र (ग्रामीण
+                            क्षेत्र) </a>
+                        
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/CMrojgaryojna.pdf')" href="#"
+                            title="मुख्यमंत्री शहरी घरेलू कामकाजी प्रशिक्षण में चयनित प्रशिक्षार्णिर्थीयो की सूची वर्ष 2013-14  ">
+                            मुख्यमंत्री शहरी घरेलू कामकाजी प्रशिक्षण में चयनित प्रशिक्षार्णिर्थीयो की सूची वर्ष
+                            2013-14 </a>
+                        
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/najul.pdf')" href="#" title="प्रा.कृ. सा. संस्था व्दारा महात्मा गांधी राष्ट्रीय रोजगार गारन्टी योजनांतर्गत ग्रामीण क्षेत्रों में अनाज भंडारण गोदाम निर्माण हेतु शासकीय भूमि की मांग">
+                            प्रा.कृ. सा. संस्था व्दारा महात्मा गांधी राष्ट्रीय रोजगार गारन्टी योजनांतर्गत ग्रामीण
+                            क्षेत्रों में अनाज भंडारण गोदाम निर्माण हेतु शासकीय भूमि की मांग</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/Tender1177.pdf')" href="#"
+                            title="अनुसूचित जाति ग्रामीण विद्युतीकरण योजनान्तर्गत निविदा आमंत्रण सूचना 2316">
+                            अनुसूचित जाति ग्रामीण विद्युतीकरण योजनान्तर्गत निविदा आमंत्रण सूचना </a>
+                    </p>
+                    <p class="links2" style="font-size: 11pt">
+                        <a class="links2a" onclick="javascript:window.open('news/Bye Laws of tourism society.pdf')"
+                            href="#" title="Bye Laws Dashpur Paryatan vikas parishad, Mandsaur">Bye-Laws Dashpur
+                            Paryatan Vikas Parishad, Mandsaur </a>
+                    </p>
+                    <p class="links2" style="font-size: 8pt">
+                        <a class="links2a" onclick="javascript:window.open('news/circularMandsaur.pdf')"
+                            href="#" title="Data Entry Operator cum PDA Assistant (Contract) Advertisement ZP">
+                            मुख्‍यमंत्री ग्रामीण आवास मिशन अंतर्गत डाटा ऐन्‍टी ऑपरेटर सह कार्यालय सहायक सह पीडीए
+                            ऑपरेटर (संविदा) सबंधी विज्ञापन </a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('LandGuideline/mandsaur_registration.pdf')"
+                            href="#" title="Proposed guideline (Land) for year 2014-15">Guidelines (Land) for
+                            year 2014-15</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/swarn jayanti rojgar yojna.pdf')"
+                            href="#" title="स्वर्ण जयंती शहरी रोजगार योजना में कौशल उन्नयन प्रशिक्षण की वित्तीय दरें प्रस्तुत करने बाबत">
+                            स्वर्ण जयंती शहरी रोजगार योजना में कौशल उन्नयन प्रशिक्षण की वित्तीय दरें प्रस्तुत
+                            करने बाबत।</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/DISTRICTURBANDEVELOPMENTAUTHORITY.pdf')"
+                            href="#" title="DISTRICTURBANDEVELOPMENTAUTHORITY">Svarn Jayanti Shahri Rojgar Prishishan
+                            Karykram Year 2012-13</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/FF/FreeDomFightermandsaur.pdf')"
+                            href="#" title="Freedom Fighter From Mandsaur">स्वतंत्रता-संग्राम सैनानी, मन्दसौर
+                        </a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/Duda List Mandaur.pdf')"
+                            href="#" title="स्वर्ण जयन्ती शहरी स्व-रोजगार (फोकस टाउन) योजनांतर्गत, प्रशिक्षणार्थियों की सूची">
+                            स्वर्ण जयन्ती शहरी स्व-रोजगार (फोकस टाउन) योजनांतर्गत, प्रशिक्षणार्थियों की सूची
+                        </a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/CED MAPE.pdf')" href="#"
+                            title="शहरी घरेलु कामकाजी महिलाओं को प्रदाय की जाने वाली स्टाई फण्ड राशि की सूची ">
+                            शहरी घरेलु कामकाजी महिलाओं को प्रदाय की जाने वाली स्टाई फण्ड राशि की सूची </a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/higheducationloan.pdf')"
+                            href="#" title="ऑनलाइन उच्च शिक्षा ऋण प्रणाली का प्रचार - प्रसार एवं उच्च शिक्षा ऋण शिविर का आयोजन ">
+                            ऑनलाइन उच्च शिक्षा ऋण प्रणाली का प्रचार - प्रसार एवं उच्च शिक्षा ऋण शिविर का आयोजन</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/Guideline2013-14.pdf')"
+                            href="#" title="मध्यप्रदेश बाजार मूल्य मार्गदर्शक सिद्धांतो का बनाया जाना और उनका पुनरीक्षण नियम, 2000 के तहत बाजार मूल्यों की गाईड लाईन वर्ष 2013-14 ">
+                            मध्यप्रदेश बाजार मूल्य मार्गदर्शक सिद्धांतो का बनाया जाना और उनका पुनरीक्षण नियम,
+                            2000 के तहत बाजार मूल्यों की गाईड लाईन वर्ष 2013-14</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/energy.pdf')" href="#" title="Flate Rate Yojna and Kisan Samridhi Yojna">
+                            फ्लैट रेट योजना एवं किसान समृध्दि योजना के क्रियांवयन के संबंध मे </a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/Vatinary_Roster.pdf')" href="#"
+                            title="horti oshdhi first bhugtan 12-13">ग्रामो पंचायतो मे उपस्थित रहने संबंधि अधिनस्थो
+                            का संस्थावार रोस्टर</a>
+                    </p>
+                    <p class="links2" style="font-size: 9pt">
+                        <a class="links2a" onclick="javascript:window.open('news/horti oshdhi first bhugtan 12-13.pdf')"
+                            href="#" title="horti oshdhi first bhugtan 12-13">उद्यानिकी मिशन योजनांतर्गत वर्ष
+                            2011-12 में कृषको की अनुदान किस्त हेतु सूची</a>
+                    </p>
+                    <p class="links2" style="font-size: 10pt">
+                        <a class="links2a" onclick="javascript:window.open('news/AccessorymineralsauctionsReleases.pdf')"
+                            href="#" title="Accessory minerals auctions Releases">विज्ञप्ति - गौण खनिज की नीलामी</a>
+                    </p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/RBC_beneficiaries.pdf')"
+                            href="#" title="Till November">RBC Beneficiaries</a>
+                    </p>
+                    <p class="links2" style="font-size: 10pt">
+                        <a class="links2a" onclick="javascript:window.open('news/PanchayatsecReq.pdf')" href="#">
+                            विज्ञप्ति - पंचायत सचिव भर्ती </a>
+                    </p>
+                    <p class="links2" style="font-size: 10pt">
+                        <a class="links2a" onclick="javascript:window.open('news/ListofSactionedwork25082012.pdf')"
+                            href="#">अनु. जनजाति बस्ती विकास योजनान्तर्गत स्वीकृत कार्यो की सूची वर्ष 2012-13</a>
+                    </p>
+                    <p class="links2" style="font-size: 10pt">
+                        <a class="links2a" onclick="javascript:window.open('news/TenderInformation25082012.pdf')"
+                            href="#">विद्युतीकरण योजनान्तर्गत स्वीकृत कार्यो की निविदा आमंत्रण सूचना </a>
+                    </p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/PreBidConferenceMandasur.pdf')"
+                            href="#">Pre Bid Conference (RFP Documents) 08-06-2012 </a>
+                    </p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/ServiceAreaPlanforFI.pdf')"
+                            href="#">State Level Bankers' Committee Service Area Plan </a>
+                    </p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/15th Excuting Commitee.pdf')"
+                            href="#">15 Points Executing Commitee (Tribal)</a>
+                    </p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/SRMS_Beneficiaries.pdf')"
+                            href="#">SRMS Beneficiaries</a></p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/labour list.pdf')" href="#">
+                            Registerd Labour List</a></p>
+                    <p class="links2">
+                        <a class="links2a" onclick="javascript:window.open('news/audit_kandika_08-09.pdf')"
+                            href="#">SGSY</a></p>
+                    <p class="links2">
+                        <a class="links2a" href="LoksevaRFP.htm">RFP Document(Loksewa)</a></p>
+                </marquee>-->
+                            <tr>
+                                <td style="height: 40px;" class="left-links1">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table style="border-top: #7f623a 4px solid; border-top-width: 4px; border-left-width: 2px;
+            border-bottom: #7f623a 4px solid; border-collapse: collapse; border-right-width: 2px;
+            border-color: #7f623a" cellspacing="0" cellpadding="0" width="100%" border="0">
+            <tr>
+                <td width="25%" height="88" style="border-right-style: solid; border-right-color: #cccccc;
+                    border-right-width: 2px">
+                    <p style="margin-top: 3px; margin-bottom: 3px; text-align: center">
+                        <b><font face="Cambria" color="#000080" size="3">SITE HOSTED BY:</font> </b>
+                    </p>
+                    <p style="margin-top: 3px; margin-bottom: 3px; text-align: center">
+                        <font face="Verdana" size="2"><span style="font-family: Cambria"><strong><a style="text-decoration: none"
+                            href="http://www.home.nic.in" target="_blank"><font color="#000080">National Informatiacs
+                                Centre, Centre, </font></a></strong></span></font>
+                    </p>
+                    <p style="margin-top: 3px; margin-bottom: 3px; text-align: center">
+                        <font face="Verdana" size="2"><span style="font-family: Cambria"><strong><a href="http://www.home.nic.in"
+                            style="text-decoration: none" target="_blank"><font color="#000080">Bhopal Madhya Pradesh</font></a>
+                        </strong></span></font>
+                    </p>
+                </td>
+                <td width="50%" height="88" style="border-right-style: solid; border-right-color: #cccccc;
+                    border-right-width: 2px">
+                    <table align="center" style="letter-spacing: normal" width="100%">
+                        <tr>
+                            <td align="center" height="30" width="100%">
+                                <!-- <font size="-1"><b><a href="javascript:open_window('Disclaimer', 'Disclaimer1.htm', 0, 0, 360, 300, 0, 0, 0, 0, 0)" target="_self" class="links1" id="opener">Disclaimer</a>&nbsp;|&nbsp; 
+                            <a href="javascript:open_window('PrivacyPolicy', 'PrivacyPolicy.htm', 0, 0, 420, 360, 0, 0, 0, 0, 0)" target="_self" class="links1" id="opener1">Privacy Policy</a>&nbsp;|&nbsp; 
+                            <a href="javascript:open_window('HyperLinkPolicy', 'Hyperlinkpolicy.htm', 0, 0, 480, 420, 0, 0, 0, 0, 0)"  target="_self" class="links1" id="opener2">Hyperlink Policy</a>&nbsp;|&nbsp; 
+                            <a href="javascript:open_window('termsn condition', 'termsncondition.htm', 0, 0, 700, 650, 0, 0, 0, 0, 0)" target="_self" class="links1" id="opener3" >Terms and Conditions</a></b></font>
+                            -->
+                                <font size="-1"><b><a class="links1" href="sitemap.htm">Sitemap</a>&nbsp;|&nbsp; <a
+                                    target="_self" class="links1" id="opener">Disclaimer</a>&nbsp;|&nbsp;<a target="_self"
+                                        class="links1" id="opener1">Privacy Policy</a>&nbsp;|&nbsp; <a target="_self" class="links1"
+                                            id="opener2">Hyperlink Policy</a>&nbsp;|&nbsp;<a target="_self" class="links1" id="opener3">Terms
+                                                & Conditions</a> </b></font>
+                                <hr align="center" style="height: 1px; color: #CCCCCC" width="100%" />
+                                <font face="Verdana" size="2" color="#000080">Last Updated on:
+                                    <!--<script language="javascript" type="text/javascript">
+                                        function lastModified() {
+                                            var monthNames = ["January", "February", "March", "April", "May", "June", "July",
+                                                                "August", "September", "October", "November", "December"];
+                                            var modiDate = new Date(document.lastModified);
+
+                                            var showAs = monthNames[modiDate.getMonth()] + " " + ((modiDate.getDate() < 10) ? "0" : "") + modiDate.getDate() + ", " + modiDate.getFullYear();
+                                            return showAs
+                                        }
+                                        document.write(lastModified());
+   
+                                    </script>-->
+                                    <script language="javascript" type="text/javascript">
+                                        document.write(new Date(document.lastModified).toString().replace(/\S+\s(\S+)\s(\d+)\s(\d+)\s.*/, '$2-$1-$3'));
+                                    </script>
+                                </font>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- <p style="margin-top: 3px; margin-bottom: 3px" align="center">
+                    <b><a href="termsofuse.htm#Disclaimer"  title="Click here for Disclaimer"
+                        style="text-decoration: none"><font face="Cambria" color="#000080" size="3">DISCLAIMER</font></a></b></p>-->
+                    <p style="margin-top: 2px; margin-bottom: 2px" align="center">
+                        <strong><font face="Verdana" color="#000080"><b style="font-weight: bold; font-family: Verdana">
+                            <span style="font-weight: bold; font-family: Cambria"><font size="2">Any query may be
+                                kindly send to kindly send to</font></span></b></font></strong> <strong><font size="2">
+                                    <font face="Verdana"><b style="font-weight: bold; color: red; font-family: Verdana;
+                                        text-decoration: underline"><span style="font-weight: bold; color: red; font-family: Verdana;
+                                            text-decoration: underline"><a style="font-weight: bold; font-family: Cambria" href="mailto:mandsaur@mp.nic.in">
+                                                <font color="#000080">mpman@nic.in</font></a></span></b></font> </font>
+                                </strong>
+                    </p>
+                </td>
+                <td width="25%" height="88">
+                    <p style="margin-top: 3px; margin-bottom: 3px" align="center">
+                        <strong><span style="font-weight: bold; font-family: Verdana"><font color="#000080"
+                            size="3"><b style="font-weight: bold; font-family: Cambria">CONTENTS</b></font></span>
+                        </strong>
+                    </p>
+                    <p style="margin-top: 3px; margin-bottom: 3px" align="center">
+                        <strong><font face="Verdana" color="#000080" size="2"><span style="font-weight: bold;
+                            font-family: Verdana"><b style="font-weight: bold; font-family: Cambria">Provided, Maintained
+                                &amp; Updated by<br />
+                                Collectorate, Mandsaur (Madhya Pradesh)</b></span> </font></strong>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="dialog" title="Disclaimer" style="display: none;">
+        <iframe frameborder="0" scrolling="no" width="360" height="300" src="disclaimer1.htm">
+        </iframe>
+    </div>
+    <div id="dialog1" title="Privacy Policy" style="display: none;">
+        <iframe frameborder="0" scrolling="no" width="420" height="360" src="PrivacyPolicy.htm">
+        </iframe>
+    </div>
+    <div id="dialog2" title="Hyper link policy" style="display: none; font-size: 10pt;">
+        <iframe frameborder="0" scrolling="no" width="480" height="400" src="Hyperlinkpolicy.htm">
+        </iframe>
+    </div>
+    <div id="dialog3" title="Terms and Conditions" style="display: none;">
+        <iframe frameborder="0" scrolling="no" width="700" height="500" src="termsncondition.htm">
+        </iframe>
+    </div>
+    <!-- <div id="dialogimg1" title="DIGITAL INDIA WEEK">
+ <iframe frameborder="0" scrolling="no" width="780" height="800" src="Dashboard.htm">
+            </iframe>
+            <a href="http://digitalindia.gov.in/content/digital-india-week" target="_blank">
+    <img src="DIWBanner 1.jpg" alt="Placeholder Image" width="900" height="250" border="2" /></a>
+     <img src="Banner 2.jpg" alt="Placeholder Image" width="900" height="250" border="2" />
+    <img src="Banner 3.jpg" alt="Placeholder Image" width="900" height="250" border="2" />
+    <img src="Banner 4.jpg" alt="Placeholder Image" width="900" height="250" border="2" />
+
+    </div>
+
+    
+        <div id="dialogimg1" title="ग्राम उदय से भारत उदय अभियान">
+       <b> समग्र हितम पंजी Download करने के लिए ब्लोक नाम पर क्लिक करें</b> <br /><br />
+        <a href="GUBU/MANDSAUR.zip">MANDSAUR</a><br /><br />
+         <a href="GUBU/MALHARGARH.zip">MALHARGARH</a><br /><br />
+          <a href="GUBU/SITAMAU.zip">SITAMAU</a><br /><br />
+          <a href="GUBU/GAROTH.zip">GAROTH</a><br /><br />
+           <a href="GUBU/BHANPURA.zip">BHANPURA</a><br /><br />
+           <br />
+              <a href="http://mppanchayatdarpan.gov.in/GUBUMP/Default.aspx" target="_blank">ग्राम उदय से भारत उदय अभियान Website के लिये क्लिक करें</a> 
+    </div>-->
+</body>
+</html>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#dialogimg").dialog({
+            position: 'center',
+            draggable: false,
+            width: 720,
+            height: 550,
+            resizable: true,
+            modal: true
+        }
+        );
+    });
+
+
+
+    $("#dialog").dialog({ autoOpen: false });
+    $("#opener").click(function () {
+        $("#dialog").dialog("open");
+    });
+    $("#dialog").dialog({
+        autoOpen: false,
+        position: 'center',
+        title: 'Disclaimer',
+        draggable: false,
+        width: 360,
+        height: 300,
+        resizable: true,
+        modal: true
+    });
+  
+</script>
+<script language="javascript" type="text/javascript">
+    $("#dialog1").dialog({ autoOpen: false });
+    $("#opener1").click(function () {
+        $("#dialog1").dialog("open");
+    });
+    $("#dialog1").dialog({
+        autoOpen: false,
+        position: 'center',
+        title: 'Privacy Policy',
+        draggable: false,
+        width: 420,
+        height: 360,
+        resizable: true,
+        modal: true
+    });
+ 
+</script>
+<script language="javascript" type="text/javascript">
+    $("#dialog2").dialog({ autoOpen: false });
+    $("#opener2").click(function () {
+        $("#dialog2").dialog("open");
+    });
+    $("#dialog2").dialog({
+        autoOpen: false,
+        position: 'center',
+        title: 'Hyper link policy',
+        draggable: false,
+        width: 480,
+        height: 420,
+        resizable: true,
+        modal: true
+    });
+
+</script>
+<script language="javascript" type="text/javascript">
+    $("#dialog3").dialog({ autoOpen: false });
+    $("#opener3").click(function () {
+        $("#dialog3").dialog("open");
+    });
+    $("#dialog3").dialog({
+        autoOpen: false,
+        position: 'center',
+        title: 'Terms and Conditions',
+        draggable: false,
+        width: 700,
+        height: 500,
+        resizable: true,
+        modal: true
+    });
+ 
+</script>
